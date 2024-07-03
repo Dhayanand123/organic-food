@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="./pexels-julia-volk-5273080.jpg"/>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script>
+        function stickyMenu() {
+            var sticky=document.getElementById('sticky');
+            if(window.pageYOffset > 220) {
+                sticky.classList.add('sticky');
+            
+            }
+            else{
+                sticky.classList.remove('sticky');
+            }
+        }
+        window.onscroll = function(){
+        stickyMenu();    
+        }
+        function hideLoadingScreen() {
+            document.getElementById('loading-screen').style.display = 'none';
+        }
+
+
+        
+        
+    </script>
+    <style>
+        /* CSS for the cart section */
+/* #cart-section {
+    margin-top: 20px;
+    color: aqua;
+    border: 1px solid rebeccapurple;
+    padding: 10px;
+    max-width: 300px;
+} */
+ /* CSS for the cart section */
+/* CSS for the cart section */
+#cart-section {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enable scrolling if cart items exceed container height */
+}
+
+#cart-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart-items li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.cart-item-details {
+    flex: 1;
+    padding-left: 15px;
+}
+
+.cart-item-details h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.cart-item-details p {
+    font-size: 14px;
+    color: #666;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+/* Example of hover effect for cart items */
+#cart-items li:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+/* Styling for empty cart message */
+#cart-empty {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Example of button styles (optional) */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+
+
+        /* Loading screen styles */
+        #loading-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #loading-screen img {
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body onload="hideLoadingScreen()">
+    <!-- Loading screen -->
+    <div id="loading-screen">
+        <img src="https://i.gifer.com/7plU.gif" alt="Loading..."/>
+    </div>
+    <div class="parallax">
+        <div class="page-title">Organic Food</div>
+    </div>
+    <div class="menu" id="sticky">
+        <ul class="menu-ul">
+            <a href="#" class="a-menu"><li>Home</li></a>
+            <a href="#deals" class="a-menu"><li>Deals</li></a>
+            <a href="#vegetables" class="a-menu"><li>Vegetables</li></a>
+            <a href="#fruits" class="a-menu"><li>Fruits</li></a>
+            <a href="#meat" class="a-menu"><li>meat</li></a>
+            
+        </ul>
+        <div class="search-box">
+            <form>
+                <input type="text" placeholder="Search..." name="search"
+                class="search-input"/>
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+</div>
+
+
+    <div class="container">
+        <a href="#vegetables">
+            <div class="categories">
+                <img src="./vegetable/Vegetable.jpg"  class="iterm-image"/>
+                <div class="image-title"> Vegetables</div>
+         
+            </div>
+        </a>
+        <a href="#fruits">
+            <div class="categories">
+                <img src="./fruits/organic fruits.jpg"  class="iterm-image"/>
+                <div class="image-title"> Fruits</div>
+         
+            </div>
+        </a>
+        <a href="#meat">
+            <div class="categories">
+                <img src="./meat/Chicken.jpg"  class="iterm-image"/>
+                <div class="image-title"> Meat & Seafood</div>
+         
+            </div>
+        </a>
+        <a href="#deals">
+            <div class="categories">
+                <img src="./deals/FOOD.jpg"  class="iterm-image"/>
+                <div class="image-title"> Deals</div>
+         
+            </div>
+        </a>
+        </div>
+        <!-- Deals begins Here -->
+         <div class="deals-container" id="deals">
+            <div class="parallax">
+                <div class="title">DEALS</div>
+            </div>
+           <div class="deal">
+            Save 20% on min-purchase of ₹500 on Vegetables</br>
+            <button class="coupon-btn">Add Coupon</button>
+           </div>
+           <div class="deal">
+            Save 10% on min-purchase of ₹179 on Fruits</br>
+            <button class="coupon-btn">Add Coupon</button>
+           </div>
+           <div class="deal">
+            Save 15% on min-purchase of ₹200 on meat/ seafood</br>
+            <button class="coupon-btn">Add Coupon</button>
+           </div>
+         </div>
+         <!-- deal ends here -->
+
+         <!-- Vegetables Begins Here -->
+          <div class="deals-container" id="vegetables">
+            <div class="parallax">
+                <div class="title">VEGETABLES</div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./vegetable/okra.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Organic Okra</b><br/>
+                    <div class="item-select" id="price1">
+                       <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity1" onchange="updatePrice1()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow1()">Buy Now</button>
+                    <div id="cart-section">
+                        <h2>Shopping Cart</h2>
+                        <ul id="cart-items1">
+                            <!-- Cart items will be dynamically added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="items">
+                <div class="images">
+                    <img src="./vegetable/Greenpepper.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Organic Greenpepper</b><br/>
+                    <div class="item-select" id="price2">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity2" onchange="updatePrice2()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow2()">Buy Now</button>
+                    <div id="cart-section">
+                        <h2>Shopping Cart</h2>
+                        <ul id="cart-items2">
+                            <!-- Cart items will be dynamically added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./vegetable/Tomatoes.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Organic Tomatoes</b><br/>
+                    <div class="item-select" id="price3">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity3" onchange="updatePrice3()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow3()">Buy Now</button>
+                    <div id="cart-section">
+                        <h2>Shopping Cart</h2>
+                        <ul id="cart-items3">
+                            <!-- Cart items will be dynamically added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./vegetable/onion.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>onion</b><br/>
+                    <div class="item-select" id="price4">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity4" onchange="updatePrice4()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow4()">Buy Now</button>
+                    <div id="cart-section">
+                        <h2>Shopping Cart</h2>
+                        <ul id="cart-items4">
+                            <!-- Cart items will be dynamically added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./vegetable/spinach.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Spinach</b><br/>
+                    <div class="item-select" id="price5">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity5" onchange="updatePrice5()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow5()">Buy Now</button>
+                    <div id="cart-section">
+                        <h2>Shopping Cart</h2>
+                        <ul id="cart-items5">
+                            <!-- Cart items will be dynamically added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./vegetable/carrot.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>organic Carrot</b><br/>
+                    <div class="item-select" id="price6">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity6" onchange="updatePrice6()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow6()">Buy Now</button>
+                    <div id="cart-section">
+                        <h2>Shopping Cart</h2>
+                        <ul id="cart-items6">
+                            <!-- Cart items will be dynamically added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- Vegetables Ends Here -->
+
+          <!-- Fruits Begins Here -->
+          <div class="deals-container" id="fruits">
+            <div class="parallax">
+                <div class="title">FRUITS</div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./fruits/apple.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Organic Apple</b><br/>
+                    <div class="item-select" id="price7">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity7" onchange="updatePrice7()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow7()">Buy Now</button>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./fruits/Dragon.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Organic Dragon Fruit</b><br/>
+                    <div class="item-select" id="price8">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity8" onchange="updatePrice8()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow8()">Buy Now</button>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./fruits/Strawberries.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Organic Strawberries</b><br/>
+                    <div class="item-select" id="price9">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity9" onchange="updatePrice9()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow9()">Buy Now</button>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./fruits/Watermelo.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Watermelon</b><br/>
+                    <div class="item-select" id="price10">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity10" onchange="updatePrice10()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow10()">Buy Now</button>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./fruits/Bananas.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Bananas</b><br/>
+                    <div class="item-select"  id="price11">
+                       <mark> Price : ₹50/250grams</mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity11" onchange="updatePrice11()">
+                        <option value="50">250 grams</option>
+                        <option value="100">500 grams</option>
+                        <option value="200">750 grams</option>
+                        <option value="400">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow11()">Buy Now</button>
+                </div>
+            </div>
+          </div>
+ 
+          <!-- Fruits Ends Here -->
+
+          <!-- Meats Begins Here -->
+          <div class="deals-container" id="meat">
+            <div class="parallax">
+                <div class="title">Meat & SEAFOOD</div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./meat/Chicken.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Chicken</b><br/>
+                    <div class="item-select" id="price12">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity12" onchange="updatePrice12()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow12()">Buy Now</button>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./meat/Fresh lamb.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Fresh lamb</b><br/>
+                    <div class="item-select" id="price13">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity13" onchange="updatePrice13()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow13()">Buy Now</button>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./meat/Prawns.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>prawns</b><br/>
+                    <div class="item-select" id="price6]14">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity14" onchange="updatePrice14()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow14()">Buy Now</button>
+                </div>
+            </div>
+            <div class="items">
+                <div class="images">
+                    <img src="./meat/Fish.jpg" class="item-image-size"/>
+                </div>
+                <div class="description">
+                    <b>Sankara Fish</b><br/>
+                    <div class="item-select" id="price15">
+                        <mark> Price : ₹115/250grams </mark>
+                    </div>
+                    <label>Qty</label>
+                    <select class="item-select" id="quantity15" onchange="updatePrice15()">
+                        <option value="115">250 grams</option>
+                        <option value="230">500 grams</option>
+                        <option value="345">750 grams</option>
+                        <option value="460">1000 grams</option>
+                    </select><br/>
+                    <button class="buynow-btn" onclick="buyNow15()">Buy Now</button>
+                </div>
+            </div>
+          </div>   
+
+          <!-- Footer Starts Here -->
+           <div class="parallaxl">
+            <div class="footer">
+                <div class="quick-links">
+                    <div>Locations</div>
+                    <ul>
+                        <li><a href="" class="a-links">Salem</a></li>
+                        <li><a href="" class="a-links">Dharumapuri</a></li>
+                        <li><a href="" class="a-links">chennai</a></li>
+                    </ul>
+                </div>
+                <div class="quick-links">
+                    <div>Careers</div>
+                    <ul>
+                        <li><a href="packing-staff.html" id="packing-staff" class="a-links">Packing Staff</a></li>
+                        <li><a href="" class="a-links">Delivery Agents</a></li>
+                        <li><a href="" class="a-links">Shelf Fillers</a></li>
+                    </ul>
+                </div>
+                <div class="quick-links">
+                    <div>Quick Links</div>
+                    <ul>
+                        <li><a href="contact.html" id="contact" class="a-links">Contact Us</a></li>
+                        <li><a href="" class="a-links">FAQ</a></li>
+                        <li><a href="" class="a-links">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyrights">
+            <i class="far fa-copyright fa-1x"></i>2024 By Dhayanand
+        </div>
+        <script>
+            // Hide loading screen
+            function hideLoadingScreen() {
+                document.getElementById('loading-screen').style.display = 'none';
+            }
+        </script>
+      <script>
+                // vegetable//
+        
+                function updatePrice1() {
+            var select = document.getElementById("quantity1");
+            var price = select.options[select.selectedIndex].value;
+            document.getElementById("price1").innerHTML = "<mark>Price : ₹" + price + "</mark>";
+        }
+
+        function buyNow1() {
+            var select = document.getElementById("quantity1");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+    
+        function updatePrice2() {
+            var select = document.getElementById("quantity2");
+            var price = select.options[select.selectedIndex].value;
+            document.getElementById("price2").innerHTML = "<mark>Price : ₹" + price + "</mark>";
+        }
+
+        function buyNow2() {
+            var select = document.getElementById("quantity2");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+
+        function updatePrice3() {
+            var select = document.getElementById("quantity3");
+            var price = select.options[select.selectedIndex].value;
+            document.getElementById("price3").innerHTML = "<mark>Price : ₹" + price + "</mark>";
+        }
+
+        function buyNow3() {
+            var select = document.getElementById("quantity3");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+        function updatePrice4() {
+            var select = document.getElementById("quantity4");
+            var price = select.options[select.selectedIndex].value;
+            document.getElementById("price4").innerHTML = "<mark>Price : ₹" + price + "</mark>";
+        }
+
+        function buyNow4() {
+            var select = document.getElementById("quantity4");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+        function updatePrice5() {
+            var select = document.getElementById("quantity5");
+            var price = select.options[select.selectedIndex].value;
+            document.getElementById("price5").innerHTML = "<mark>Price : ₹" + price + "</mark>";
+        }
+
+        function buyNow5() {
+            var select = document.getElementById("quantity5");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+        function updatePrice6() {
+            var select = document.getElementById("quantity6");
+            var price = select.options[select.selectedIndex].value;
+            document.getElementById("price6").innerHTML = "<mark>Price : ₹" + price + "</mark>";
+        }
+        function buyNow6() {
+            var select = document.getElementById("quantity6");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+
+      
+
+
+                // fruits//
+
+
+                function updatePrice7() {
+            var select = document.getElementById("quantity7");
+            var price = select.options[select.selectedIndex].value;
+            document.getElementById("price7").innerHTML = "<mark>Price : ₹" + price + "</mark>";
+        }
+
+        function buyNow7() {
+            var select = document.getElementById("quantity7");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+        function updatePrice8() {
+            var select = document.getElementById("quantity8");
+            var price = select.options[select.selectedIndex].value;
+            document.getElementById("price8").innerHTML = "<mark>Price : ₹" + price + "</mark>";
+        }
+
+        function buyNow8() {
+            var select = document.getElementById("quantity8");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+    function updatePrice9() {
+        var select = document.getElementById("quantity9");
+        var price = select.options[select.selectedIndex].value;
+        var weight = select.options[select.selectedIndex].text;
+        document.getElementById("price9").innerHTML = "Price : ₹" + price + "/" + weight;
+    }
+    function buyNow9() {
+            var select = document.getElementById("quantity9");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+    function updatePrice10() {
+        var select = document.getElementById("quantity10");
+        var price = select.options[select.selectedIndex].value;
+        var weight = select.options[select.selectedIndex].text;
+        document.getElementById("price10").innerHTML = "Price : ₹" + price + "/" + weight;
+    }
+    function buyNow10() {
+            var select = document.getElementById("quantity10");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+    function updatePrice11() {
+        var select = document.getElementById("quantity11");
+        var price = select.options[select.selectedIndex].value;
+        var weight = select.options[select.selectedIndex].text;
+        document.getElementById("price11").innerHTML = "Price : ₹" + price + "/" + weight;
+    }
+    function buyNow11() {
+            var select = document.getElementById("quantity11");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+
+
+    //   meat and seafood
+
+    function updatePrice12() {
+        var select = document.getElementById("quantity12");
+        var price = select.options[select.selectedIndex].value;
+        var weight = select.options[select.selectedIndex].text;
+        document.getElementById("price12").innerHTML = "Price : ₹" + price + "/" + weight;
+    }
+    function buyNow12() {
+            var select = document.getElementById("quantity12");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+    function updatePrice13() {
+        var select = document.getElementById("quantity13");
+        var price = select.options[select.selectedIndex].value;
+        var weight = select.options[select.selectedIndex].text;
+        document.getElementById("price13").innerHTML = "Price : ₹" + price + "/" + weight;
+    }
+    function buyNow13() {
+            var select = document.getElementById("quantity13");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+    function updatePrice14() {
+        var select = document.getElementById("quantity14");
+        var price = select.options[select.selectedIndex].value;
+        var weight = select.options[select.selectedIndex].text;
+        document.getElementById("price14").innerHTML = "Price : ₹" + price + "/" + weight;
+    }
+    function buyNow14() {
+            var select = document.getElementById("quantity14");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+    function updatePrice15() {
+        var select = document.getElementById("quantity15");
+        var price = select.options[select.selectedIndex].value;
+        var weight = select.options[select.selectedIndex].text;
+        document.getElementById("price15").innerHTML = "Price : ₹" + price + "/" + weight;
+    }
+    function buyNow15() {
+            var select = document.getElementById("quantity15");
+            var quantity = select.options[select.selectedIndex].text;
+            var price = select.options[select.selectedIndex].value;
+            alert("You have selected " + quantity + " for ₹" + price + ". Proceeding to buy now.");
+        }
+        
+        // Function to update price based on quantity selection
+function updatePrice1() {
+    var quantity = document.getElementById("quantity1").value;
+    document.getElementById("price1").innerHTML = "<mark>Price : ₹" + quantity + "/250grams</mark>";
+}
+
+// Function to add selected item to the cart
+function buyNow1() {
+    var item = "Organic Okra";
+    var quantity = document.getElementById("quantity1").value;
+    var price = quantity + "/250grams";
+    
+    // Create a new cart item element
+    var cartItem = document.createElement("li");
+    cartItem.innerHTML = "<b>" + item + "</b> - " + quantity + " - ₹" + price;
+    
+    // Append the cart item to the cart section
+    document.getElementById("cart-items1").appendChild(cartItem);
+}
+
+
+
+
+
+function updatePrice2() {
+    var quantity = document.getElementById("quantity2").value;
+    document.getElementById("price2").innerHTML = "<mark>Price : ₹" + quantity + "/250grams</mark>";
+}
+
+// Function to add selected item to the cart
+function buyNow2() {
+    var item = "Organic Greenpepper";
+    var quantity = document.getElementById("quantity2").value;
+    var price = quantity + "/250grams";
+    
+    // Create a new cart item element
+    var cartItem = document.createElement("li");
+    cartItem.innerHTML = "<b>" + item + "</b> - " + quantity + " - ₹" + price;
+    
+    // Append the cart item to the cart section
+    document.getElementById("cart-items2").appendChild(cartItem);
+}
+function updatePrice3() {
+    var quantity = document.getElementById("quantity3").value;
+    document.getElementById("price3").innerHTML = "<mark>Price : ₹" + quantity + "/250grams</mark>";
+}
+
+// Function to add selected item to the cart
+function buyNow3() {
+    var item = "Organic Tomatoes";
+    var quantity = document.getElementById("quantity3").value;
+    var price = quantity + "/250grams";
+    
+    // Create a new cart item element
+    var cartItem = document.createElement("li");
+    cartItem.innerHTML = "<b>" + item + "</b> - " + quantity + " - ₹" + price;
+    
+    // Append the cart item to the cart section
+    document.getElementById("cart-items3").appendChild(cartItem);
+}
+
+function updatePrice4() {
+    var quantity = document.getElementById("quantity4").value;
+    document.getElementById("price4").innerHTML = "<mark>Price : ₹" + quantity + "/250grams</mark>";
+}
+
+// Function to add selected item to the cart
+function buyNow4() {
+    var item = "Organic Tomatoes";
+    var quantity = document.getElementById("quantity4").value;
+    var price = quantity + "/250grams";
+    
+    // Create a new cart item element
+    var cartItem = document.createElement("li");
+    cartItem.innerHTML = "<b>" + item + "</b> - " + quantity + " - ₹" + price;
+    
+    // Append the cart item to the cart section
+    document.getElementById("cart-items4").appendChild(cartItem);
+}
+
+function updatePrice5() {
+    var quantity = document.getElementById("quantity5").value;
+    document.getElementById("price5").innerHTML = "<mark>Price : ₹" + quantity + "/250grams</mark>";
+}
+
+// Function to add selected item to the cart
+function buyNow5() {
+    var item = "Organic Tomatoes";
+    var quantity = document.getElementById("quantity5").value;
+    var price = quantity + "/250grams";
+    
+    // Create a new cart item element
+    var cartItem = document.createElement("li");
+    cartItem.innerHTML = "<b>" + item + "</b> - " + quantity + " - ₹" + price;
+    
+    // Append the cart item to the cart section
+    document.getElementById("cart-items5").appendChild(cartItem);
+}
+
+
+
+      </script>
+
+</body>
+</html>ss
